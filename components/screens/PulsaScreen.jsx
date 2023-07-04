@@ -1,24 +1,72 @@
-import {View, Text, StyleSheet, TextInput, ScrollView} from 'react-native';
-import React from 'react';
-// import {ScrollView} from 'react-native-gesture-handler';
-import Contact from '../../assets/Svg/contact.svg';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
+import React, {useState} from 'react';
+import {getOperator} from 'no-telp';
+import Pulsa from '../utils/SmallCard';
+import Confirmation from '../utils/Confirmation';
+import GetOperator from '../utils/GetOperator';
+import InputNumber from '../utils/InputNumber';
 
 const PulsaScreen = () => {
+  const [phone, setPhone] = useState();
+  const [validation, setValidalidation] = useState({
+    valid: true,
+    operator: 'Smartfren',
+  });
+
+  const phoneInputHandler = text => {
+    const number = text.replace(/[^0-9]/g, '');
+    setPhone(number);
+    setValidalidation(getOperator(number));
+  };
   return (
-    <View style={style.container}>
-      <View style={style.number}>
-        <Text
-          style={{
-            color: '#2E5392',
-            marginTop: 8,
-            fontFamily: 'SourceSansPro-Regular',
-            fontSize: 12,
-          }}>
-          Masukkan nomor telpon
-        </Text>
-        <TextInput inp style={style.numberInput}></TextInput>
-        {/* <Contact width={29} height={37} color="#2E5392" /> */}
-      </View>
+    <View style={{flex: 1, backgroundColor: '#E2EFFD'}}>
+      <ScrollView style={style.container}>
+        <InputNumber phone={phone} onChangeText={phoneInputHandler} />
+
+        {validation.valid && (
+          <View style={style.product}>
+            <GetOperator operator={validation.operator} />
+            <TouchableOpacity style={{width: '45%', ...style.subTitle}}>
+              <Text style={style.subMenu}>Pulsa</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{width: '55%', ...style.subTitle}}>
+              <Text style={style.subMenu}>Pulsa Transfer</Text>
+            </TouchableOpacity>
+            <View style={style.pulsaWrapper}>
+              <Pulsa active={true} produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+              <Pulsa produk={'5.000'} price={'Rp 5.120'} />
+            </View>
+          </View>
+        )}
+      </ScrollView>
+      <Confirmation total={'Rp 5.120'} />
     </View>
   );
 };
@@ -27,29 +75,40 @@ export default PulsaScreen;
 
 const style = StyleSheet.create({
   container: {
-    backgroundColor: '#E2EFFD',
     paddingTop: 15,
     paddingHorizontal: 20,
   },
-  number: {
+
+  product: {
     backgroundColor: 'white',
-    borderRadius: 8,
-    paddingHorizontal: 20,
-  },
-  numberInput: {
-    borderWidth: 2,
-    marginTop: 5,
-    marginBottom: 17,
-    fontSize: 18,
-    height: 40,
-    paddingHorizontal: 13,
-    borderColor: '#ADD4F2',
+    display: 'flex',
+    flexDirection: 'row',
+    marginTop: 30,
     borderRadius: 5,
-    width: 277,
+    flexWrap: 'wrap',
+    marginBottom: 130,
+  },
+  subTitle: {
+    display: 'flex',
+    alignItems: 'center',
+    paddingVertical: 15,
+  },
+  subMenu: {
     fontFamily: 'SourceSansPro-Semibold',
-    color: '#2E5392',
+    fontSize: 15,
     fontWeight: 'bold',
-    // paddingVertical:
-    paddingBottom: 6,
+    color: '#2E5392',
+  },
+
+  pulsaWrapper: {
+    width: '100%',
+    padding: 15,
+    paddingTop: 0,
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    rowGap: 15,
+    justifyContent: 'space-between',
+    paddingBottom: 20,
   },
 });

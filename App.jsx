@@ -7,33 +7,25 @@ import {
 } from '@react-navigation/stack';
 import HomeScreen from './components/screens/HomeScreen';
 import PulsaScreen from './components/screens/PulsaScreen';
+import GamesScreen from './components/screens/GamesScreen';
+import EwalletScreen from './components/screens/EwalletScreen';
+import ListrikScreen from './components/screens/ListrikScreen';
+import TelponScreen from './components/screens/TelponScreen';
+import SmsScreen from './components/screens/SmsScreen';
+import InternetScreen from './components/screens/InternetScreen';
 
 const Stack = createStackNavigator();
-const config = {
-  animation: 'spring',
-  config: {
-    stiffness: 500,
-    damping: 100,
-    mass: 3,
-    overshootClamping: false,
-    restDisplacementThreshold: 0.01,
-    restSpeedThreshold: 0.01,
-  },
-};
+
 const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        {/* <Stack.Screen name="Menu" component={Menu} /> */}
         <Stack.Screen
           name="Home"
           component={HomeScreen}
           options={{
             headerShown: false,
-            gestureEnabled: true,
-            // transitionSpec: {
-            //   open: config,
-            //   close: config,
-            // },
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           }}
         />
@@ -45,11 +37,72 @@ const App = () => {
               backgroundColor: '#2E5392',
             },
             headerTintColor: 'white',
-            gestureEnabled: true,
-            //   // transitionSpec: {
-            //   //   open: config,
-            //   //   close: config,
-            //   // },
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          }}
+        />
+        <Stack.Screen
+          name="E-Wallet"
+          component={EwalletScreen}
+          options={{
+            headerStyle: {
+              backgroundColor: '#2E5392',
+            },
+            headerTintColor: 'white',
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          }}
+        />
+        <Stack.Screen
+          name="Games"
+          component={GamesScreen}
+          options={{
+            headerStyle: {
+              backgroundColor: '#2E5392',
+            },
+            headerTintColor: 'white',
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          }}
+        />
+        <Stack.Screen
+          name="Listrik"
+          component={ListrikScreen}
+          options={{
+            headerStyle: {
+              backgroundColor: '#2E5392',
+            },
+            headerTintColor: 'white',
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          }}
+        />
+        <Stack.Screen
+          name="Telpon"
+          component={TelponScreen}
+          options={{
+            headerStyle: {
+              backgroundColor: '#2E5392',
+            },
+            headerTintColor: 'white',
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          }}
+        />
+        <Stack.Screen
+          name="SMS"
+          component={SmsScreen}
+          options={{
+            headerStyle: {
+              backgroundColor: '#2E5392',
+            },
+            headerTintColor: 'white',
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          }}
+        />
+        <Stack.Screen
+          name="Internet"
+          component={InternetScreen}
+          options={{
+            headerStyle: {
+              backgroundColor: '#2E5392',
+            },
+            headerTintColor: 'white',
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           }}
         />
